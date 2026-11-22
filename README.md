@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="banner.png" alt="Aleatory — olho de circuito em rede carmesim" width="100%">
+</div>
+
 # Aleatory
 
 **Workspace operacional para segurança ofensiva e resposta a incidentes, conduzido por um agente de linguagem.**
