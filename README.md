@@ -42,39 +42,25 @@ Três ideias sustentam o desenho:
 
 ## Arquitetura
 
-```mermaid
-flowchart LR
-    subgraph Interfaces
-        CLI[CLI]
-        WEB[Painel web]
-        DESK[Cliente desktop]
-        API[API compatível com OpenAI]
-    end
-
-    subgraph Núcleo
-        LOOP[Loop do agente]
-        CTX[Compilador de contexto]
-        MEM[Memória operacional]
-        FIND[Findings]
-    end
-
-    subgraph Execução
-        SH[Shell persistente]
-        PLG[Plugins]
-        EXT[Ferramentas externas]
-    end
-
-    subgraph Modelos
-        PROV[Camada multi-provedor]
-        LLM[LLMs locais e remotos]
-    end
-
-    Interfaces --> LOOP
-    LOOP --> CTX --> PROV --> LLM
-    LOOP --> SH --> EXT
-    LOOP --> PLG
-    LOOP --> MEM
-    LOOP --> FIND
+```text
+┌────────────────────────────────────────────────────────────────┐
+│ 1 · Interfaces    CLI · Painel web · Cliente desktop · API /v1 │
+└────────────────────────────────────────────────────────────────┘
+                                 │
+                                 ▼
+┌────────────────────────────────────────────────────────────────┐
+│ 2 · Núcleo        contexto · loop · estado · verificação       │
+└────────────────────────────────────────────────────────────────┘
+                                 │
+                                 ▼
+┌────────────────────────────────────────────────────────────────┐
+│ 3 · Execução      shell PTY · plugins · ferramentas externas   │
+└────────────────────────────────────────────────────────────────┘
+                                 │
+                                 ▼
+┌────────────────────────────────────────────────────────────────┐
+│ 4 · Modelos       multi-provedor, local ou remoto              │
+└────────────────────────────────────────────────────────────────┘
 ```
 
 **Interfaces.** CLI, painel web e cliente desktop compartilham o mesmo núcleo. A API compatível com OpenAI expõe os modelos configurados para clientes externos, sem transformar o editor do operador num segundo executor.
