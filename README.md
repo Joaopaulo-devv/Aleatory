@@ -101,4 +101,4 @@ O Aleatory é uma ferramenta de operação em segurança. Use apenas em sistemas
 
 ## Autor
 
-Criado e desenvolvido por **Mörlsara**.
+Criado e desenvolvido por **João Paulo**.
